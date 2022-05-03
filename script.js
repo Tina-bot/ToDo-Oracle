@@ -1,33 +1,41 @@
 import checkComplete from "./components/checkComplete.js";
 import deleteIcon from "./components/deleteIcon.js";
 
-(() => {
-    const btn = document.querySelector("[data-form-btn]");
 
-    const createTask = (event) => {
-        event.preventDefault();
-        const input = document.querySelector("[data-form-input]");
-        const value = input.value
-        const list = document.querySelector("[data-form-list]");
-        const task = document.createElement("li");
-        task.classList.add("card");
-        input.value = "";
+const btn = document.querySelector("[data-form-btn]");
 
-        const taskContent = document.createElement("div");
+const addTask = (event) => {
+    const list = document.querySelector("[data-form-list]");
+    const task = createTask(event);
+    list.appendChild(task);
 
-        const titleTask = document.createElement("span");
-        titleTask.classList.add("task");
-        titleTask.innerText = value;
+};
 
-        taskContent.appendChild(checkComplete());
-        taskContent.appendChild(titleTask);
+const createTask = (event) => {
+    event.preventDefault();
+    const inputValue = document.querySelector("[data-form-input]").value;
+    const date = document.querySelector("[data-form-date]").value;
+    const task = document.createElement("li");
+    task.classList.add("card");
 
-        task.appendChild(taskContent);
-        task.appendChild(deleteIcon());
-        list.appendChild(task);
+    const dateElement = document.createElement("H3");
+    dateElement.innerText = moment(date).format("DD/MM/YYYY HH:mm");
 
-    };
+    const taskContent = document.createElement("div");
 
-    btn.addEventListener("click", createTask);
+    const titleTask = document.createElement("span");
+    titleTask.classList.add("task");
+    titleTask.innerText = inputValue;
 
-})();
+    taskContent.appendChild(checkComplete());
+    taskContent.appendChild(titleTask);
+
+    task.appendChild(taskContent);
+    task.appendChild(dateElement);
+    task.appendChild(deleteIcon());
+
+    return task;
+};
+
+btn.addEventListener("click", addTask);
+
