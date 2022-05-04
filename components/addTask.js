@@ -29,7 +29,7 @@ export const addTask = (event) => {
     };
     
     const taskList = JSON.parse(localStorage.getItem("tasks")) || [];
-    taskList.push(inputValue, date);
+    taskList.push(taskObject);
     localStorage.setItem("tasks", JSON.stringify(taskList));
     
     const task = createTask(taskObject);
