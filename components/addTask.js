@@ -17,23 +17,23 @@ export const addTask = (event) => {
         alert.textContent = "Please fill all fields";
         alert.appendChild(alertIcon);
         document.querySelector("[data-form-alert]").appendChild(alert);
-        
+
         setTimeout(() => {
             alert.remove();
         }, 30000);
 
-    }else{    
-    const taskObject = {
-        inputValue,
-        date,
-    };
-    
-    const taskList = JSON.parse(localStorage.getItem("tasks")) || [];
-    taskList.push(taskObject);
-    localStorage.setItem("tasks", JSON.stringify(taskList));
-    
-    const task = createTask(taskObject);
-    list.appendChild(task);
+    } else {
+        const taskObject = {
+            inputValue,
+            date,
+        };
+
+        const taskList = JSON.parse(localStorage.getItem("tasks")) || [];
+        taskList.push(taskObject);
+        localStorage.setItem("tasks", JSON.stringify(taskList));
+
+        const task = createTask(taskObject);
+        list.appendChild(task);
     }
 };
 
