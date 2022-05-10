@@ -138,4 +138,22 @@ form {
   padding: 10px;
   border-radius: 10px;
   font-family: 'Dosis', sans-serif;
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  justify-content: center;
+}
+
+.date {
+  font-size: 18px;
+  align-self: flex-start;
+  padding: 15px 0px;
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  color: rgb(16, 69, 102);
+}
+
+.date i{
+  margin-right: 5px;
 }
